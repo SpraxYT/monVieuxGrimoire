@@ -1,0 +1,43 @@
+# Dépendances
+node_modules/
+package-lock.json
+
+# Variables d'environnement
+.env
+.env.local
+.env.development
+.env.production
+
+# Images téléchargées et optimisées
+/images/temp/*
+/images/optimized/*
+# Mais garder les dossiers eux-mêmes
+!/images/temp/.gitkeep
+!/images/optimized/.gitkeep
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Fichiers de système d'exploitation
+.DS_Store
+Thumbs.db
+.directory
+
+# Fichiers d'IDE et éditeurs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Fichiers de build et de cache
+/dist
+/build
+/.cache
+/.temp
+
+# Autres
+.coverage
+.nyc_output
+coverage/
