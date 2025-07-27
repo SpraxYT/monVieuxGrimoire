@@ -24,11 +24,20 @@ app.use(helmet({ crossOriginResourcePolicy: { policy: "same-site" } }));
 // Rate limiter to prevent brute force attacks
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
+  max: 3, // limit each IP to 100 requests per windowMs
   standardHeaders: true,
   legacyHeaders: false,
 });
 app.use('/api/auth', limiter); // Apply rate limiting to authentication endpoints
+
+//DDOS
+const limiterGlobal = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 50, // limit each IP to 100 requests per windowMs
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use('/api/', limiterGlobal); // Apply rate limiting to authentication endpoints
 
 // CORS configuration
 // Configuration CORS détaillée pour résoudre les problèmes d'images

@@ -96,7 +96,7 @@ exports.rateBook = (req, res, next) => {
   Book.findOne({ _id: req.params.id })
     .then(book => {
       // Check if user already rated this book
-      const userRatingIndex = book.ratings.findIndex(rating => rating.userId === req.body.userId);
+      const userRatingIndex = book.ratings.findIndex(rating => rating.userId === req.auth.userId);
       
       if (userRatingIndex !== -1) {
         return res.status(400).json({ message: 'You have already rated this book' });
@@ -104,7 +104,7 @@ exports.rateBook = (req, res, next) => {
       
       // Add the new rating
       book.ratings.push({
-        userId: req.body.userId,
+        userId: req.auth.userId,
         grade: req.body.rating
       });
       

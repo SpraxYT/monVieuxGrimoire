@@ -21,7 +21,7 @@ module.exports = async (req, res, next) => {
     
     // Optimize the image
     await sharp(tempFilePath)
-      .resize(800, 1200, { 
+      .resize(415, 415, { 
         fit: 'inside', 
         withoutEnlargement: true 
       })
